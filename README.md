@@ -4,11 +4,14 @@ Docker to launch librarian-puppet
 
 # Launch librarian-puppet with docker
 
-```docker run --tty --interactive --rm --user $(id -u):$(id -g) --volume $(pwd):/puppet atolcd/docker-librarian-puppet:latest "$@"```
+```sh
+docker run --tty --interactive --rm --user $(id -u):$(id -g) --volume $(pwd):/puppet atolcd/librarian-puppet:latest "$@"
+```
 
 # Add librarian-puppet to .bashrc or .zshrc
 
-```librarian-puppet () {
+```sh
+librarian-puppet () {
     tty=
     tty -s && tty=--tty
     docker run \
@@ -17,6 +20,7 @@ Docker to launch librarian-puppet
         --rm \
         --user $(id -u):$(id -g) \
         --volume $(pwd):/puppet \
-        atolcd/docker-librarian-puppet:latest "$@"
-}```
+        atolcd/librarian-puppet:latest "$@"
+}
+```
 
