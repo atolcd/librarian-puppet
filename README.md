@@ -46,7 +46,7 @@ puppet-lint () {
         --rm \
         --user $(id -u):$(id -g) \
         --volume $(pwd):/puppet \
-        --endpoint='puppet-lint' \
+        --entrypoint='puppet-lint' \
         atolcd/puppet-tools:latest "$@"
 }
 ```
