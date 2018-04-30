@@ -7,7 +7,7 @@ Docker to launch librarian-puppet or puppet-lint
 ## Launch
 
 ```sh
-docker run --tty --interactive --rm --user $(id -u):$(id -g) --volume $(pwd):/puppet atolcd/puppet-tools:latest <args>
+docker run --tty --interactive --rm --user $(id -u):$(id -g) --volume $(pwd):/puppet atolcd/puppet-tools:latest librarian-puppet <args>
 ```
 
 ## Add to .bashrc or .zshrc
@@ -20,9 +20,8 @@ librarian-puppet () {
         $tty \
         --interactive \
         --rm \
-        --user $(id -u):$(id -g) \
         --volume $(pwd):/puppet \
-        atolcd/puppet-tools:latest "$@"
+        atolcd/puppet-tools:latest "librarian-puppet $@"
 }
 ```
 
@@ -31,7 +30,7 @@ librarian-puppet () {
 ## Launch
 
 ```sh
-docker run --tty --interactive --rm --user $(id -u):$(id -g) --volume $(pwd):/puppet --entrypoint puppet-lint atolcd/puppet-tools:latest <args>
+docker run --tty --interactive --rm --user $(id -u):$(id -g) --volume $(pwd):/puppet atolcd/puppet-tools:latest puppet-lint <args>
 ```
 
 ## Add to .bashrc or .zshrc
@@ -44,10 +43,8 @@ puppet-lint () {
         $tty \
         --interactive \
         --rm \
-        --user $(id -u):$(id -g) \
         --volume $(pwd):/puppet \
-        --entrypoint='puppet-lint' \
-        atolcd/puppet-tools:latest "$@"
+        atolcd/puppet-tools:latest "puppet-lint $@"
 }
 ```
 
